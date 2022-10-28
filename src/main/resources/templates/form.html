@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8" th:remove="tag">
+</head>
+<body>
+    <div layout:fragment="content" class="container-fluid">
+        <h4>MyBatis APP</h4>
+
+        <form th:action="@{/process}" th:object="${user}"
+              method="post" novalidate>
+
+            <input type="hidden" th:field="*{id}">
+
+            <div class="mb-3">
+                <label for="name">名前</label>
+                <input type="text" class="form-control"
+                       th:errorclass="is-invalid" th:field="*{name}">
+                <div class="invalid feedback" th:errors="*{name}"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="age">年齢</label>
+                <input type="number" class="form-control"
+                       th:errorclass="is-invalid" th:field="*{age}">
+                <div class="invalid feedback" th:errors="*{age}"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="profile">プロフィール</label>
+                <input type="text" class="form-control"
+                       th:errorclass="is-invalid" th:field="*{profile}">
+                <div class="invalid-feedback" th:errors="*{profile}"></div>
+            </div>
+
+            <button class="btn btn-outline-primary px-5">
+                <i class="bi bi-pencil-fill"></i>
+                保存
+            </button>
+        </form>
+    </div>
+</body>
+</html>
