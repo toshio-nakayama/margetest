@@ -1,17 +1,26 @@
 package com.example.margetest.database;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.*;
 
 public class User {
+
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.id")
     private Integer id;
 
+    @NotBlank
+    @Size(max = 60)
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.name")
     private String name;
 
+    @NotNull
+    @Min(18)
+    @Max(150)
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.age")
     private Integer age;
 
+    @NotBlank
+    @Size(max = 254)
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.profile")
     private String profile;
 

@@ -28,10 +28,14 @@ public class UserController {
 
 
     @PostMapping("/process")
-    public String process(@ModelAttribute User user){
+    public String process(@Validated @ModelAttribute User user, BindingResult result){
+        if (result.hasErrors()){
+            return "form";
+        }
         service.save(user);
         return "redirect:/";
     }
+
 
     @GetMapping("/edit/{id}")
     public String editUser(@PathVariable Integer id, Model model){
